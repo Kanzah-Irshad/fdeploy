@@ -1,0 +1,83 @@
+.crud-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.crud-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.crud-form input {
+  flex: 1 1 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.crud-form button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.crud-form button:hover {
+  background-color: #0056b3;
+}
+
+.crud-list {
+  list-style: none;
+  padding: 0;
+}
+
+.crud-item {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.crud-item h3 {
+  margin: 0 0 5px 0;
+}
+
+.crud-buttons button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.crud-buttons button:first-child {
+  background-color: #ffc107;
+  color: white;
+}
+
+.crud-buttons button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .crud-item {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .crud-buttons {
+    display: flex;
+    gap: 10px;
+  }
+}
