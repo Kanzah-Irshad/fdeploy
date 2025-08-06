@@ -1,52 +1,23 @@
-// import { createContext, useContext, useState, useEffect } from "react";
-// import axios from "axios";
-
-// const AuthContext = createContext();
-
-// export const AuthProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-
-//   const getProfile = async () => {
-//     try {
-//       const res = await axios.get("http://localhost:5000/api/auth/profile", {
-//         withCredentials: true
-//       });
-//       setUser(res.data.user);
-//     } catch (err) {
-//       setUser(null);
-//     }
-//   };
-
-//   useEffect(() => {
-//     getProfile();
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ user, setUser, getProfile }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const useAuth = () => useContext(AuthContext);
 // src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
 
+// ✅ Recommended: use VITE_API_BASE env variable
+const API = import.meta.env.VITE_API_BASE || 'https://bdeploy.vercel.app';
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Load user on app start
   useEffect(() => {
-    axios.get('https://bdeploy.vercel.app/api/auth/profile', { withCredentials: true })
+    axios.get(`${API}/api/auth/profile`, { withCredentials: true })
       .then(res => setUser(res.data))
       .catch(() => setUser(null));
   }, []);
 
   const logout = () => {
-    axios.post('https://bdeploy.vercel.app/api/auth/logout', {}, { withCredentials: true });
+    axios.post(`${API}/api/auth/logout`, {}, { withCredentials: true });
     setUser(null);
   };
 
